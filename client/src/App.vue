@@ -1,25 +1,39 @@
 <template>
   <div id="app">
-    <input type="text" name="" value="">
-    <button type="button" name="button" @click="send">Send</button>
+    <ul>
+      <li v-for="m in messages" v-text="m"></li>
+    </ul>
+    <input v-model="message" @keydown.enter="send">
+    <button type="button" @click="send">Send</button>
   </div>
 </template>
 
 <script>
 import IO from 'socket.io-client'
+var socket = IO('http://localhost:3000')
 
 export default {
   name: 'app',
-  date () {
-    return {}
+  data () {
+    return {
+      message: 'Hello Vue!',
+      messages: []
+    }
   },
   created () {
-    var socket = IO('http://localhost:3000')
-
-    console.log(socket)
+    let self = this
+    socket.on('get message', function (msg) {
+      self.messages.push(msg)
+    })
   },
   methods: {
-    send () {}
+    send () {
+      let self = this
+
+      socket.emit('send message', self.message)
+
+      self.message = ''
+    }
   }
 }
 </script>
