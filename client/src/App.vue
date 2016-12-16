@@ -10,7 +10,7 @@
 
 <script>
 import IO from 'socket.io-client'
-var socket = IO('http://localhost:3000')
+var socket = IO(`http://${window.location.hostname}:3000`)
 
 export default {
   name: 'app',
