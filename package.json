@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/limichange/socket-demo/issues"
   },
-  "homepage": "https://github.com/limichange/socket-demo#readme"
+  "homepage": "https://github.com/limichange/socket-demo#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.7.2"
+  }
 }
