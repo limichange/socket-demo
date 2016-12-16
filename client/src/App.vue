@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    APP
+    <input type="text" name="" value="">
+    <button type="button" name="button" @click="send">Send</button>
   </div>
 </template>
 
 <script>
+import IO from 'socket.io-client'
+
 export default {
-  name: 'app'
+  name: 'app',
+  date () {
+    return {}
+  },
+  created () {
+    var socket = IO('http://localhost:3000')
+
+    console.log(socket)
+  },
+  methods: {
+    send () {}
+  }
 }
 </script>
 
